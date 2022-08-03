@@ -28,7 +28,8 @@ modifier isWhitelisted(address _address) {
     require(whitelistedAddresses[_address], "You need to be whitelisted");_;
   }
   
-  function TimFunction() public isWhitelisted(msg.sender){
+  function TimFunction() public payable isWhitelisted(msg.sender){
+      require (msg.value > 0.10 ether );
       _mint(msg.sender,1000*10**18);
   }
  }
