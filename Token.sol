@@ -5,17 +5,12 @@
  import  "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
  contract DevToken is ERC20{
-   constructor() ERC20("DevToken", "DVT"){
+   constructor() ERC20("DevToken", "DVT"){owner = msg.sender; // setting the owner the contract deployer
        _mint(msg.sender,1000*10**18);
    }
-}
-
-contract Whitlist {
-address owner; // varible that will contain the address of the cont
-constructor()  {
-    owner = msg.sender; // setting the owner the contract deployer
-    }
-
+   address owner; // varible that will contain the address of the cont
+    
+   
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Ownable:  caller is not the owner" );
@@ -37,6 +32,3 @@ modifier isWhitelisted(address _address) {
      return (true);
   }
  }
-
-
-
