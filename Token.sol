@@ -28,7 +28,7 @@ modifier isWhitelisted(address _address) {
     require(whitelistedAddresses[_address], "You need to be whitelisted");_;
   }
   
-  function exampleFunction() public view isWhitelisted(msg.sender) returns(bool){
+  function TimFunction() public isWhitelisted(msg.sender){
       _mint(msg.sender,1000*10**18);
   }
  }
