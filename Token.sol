@@ -29,6 +29,6 @@ modifier isWhitelisted(address _address) {
   }
   
   function exampleFunction() public view isWhitelisted(msg.sender) returns(bool){
-     return (true);
+      _mint(msg.sender,1000*10**18);
   }
  }
