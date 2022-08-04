@@ -5,7 +5,8 @@
  import  "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
  contract DevToken is ERC20{
-   constructor() ERC20("DevToken", "DVT"){owner = msg.sender; // setting the owner the contract deployer
+   constructor() ERC20("DevToken", "DVT"){ 
+    owner = msg.sender; // setting the owner the contract deployer 
        _mint(msg.sender,1000*10**18);
    }
    address owner; // varible that will contain the address of the cont
@@ -32,4 +33,11 @@ modifier isWhitelisted(address _address) {
       require (msg.value > 0.10 ether );
       _mint(msg.sender,1000*10**18);
   }
- }
+
+    function withdraw(uint amount, address payable destAddr ) public {
+        require(msg.sender == owner, "Only owner can withdraw");      
+
+        destAddr.transfer (amount);
+        
+    }
+}
